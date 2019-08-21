@@ -128,12 +128,21 @@ public class Janela extends javax.swing.JDialog {
 
         //BINÁRIO -> DECIMAL 
         if (boxEntrada.getSelectedIndex() == 0 && boxSaida.getSelectedIndex() == 1) {
-
+           int entrada = Integer.valueOf(this.textEntrada.getText());
+           String s = "";
+           while( entrada >= 2 ){
+               int valor = entrada / 2; 
+               int resto = entrada % 2;
+               entrada = valor;
+               
+               s = resto + s;  
+           }
+            s = entrada + s;
+            textSaida.setText(s);
         }
 
         //BINÁRIO -> HEXADECIMAL 
         if (boxEntrada.getSelectedIndex() == 0 && boxSaida.getSelectedIndex() == 2) {
-
         }
 
         //DECIMAL -> BINÁRIO
@@ -143,7 +152,62 @@ public class Janela extends javax.swing.JDialog {
 
         //DECIMAL -> HEXADECIMAL 
         if (boxEntrada.getSelectedIndex() == 1 && boxSaida.getSelectedIndex() == 2) {
-
+            int entrada = Integer.valueOf(this.textEntrada.getText());
+           String s = "";
+           while( entrada >= 16 ){
+               int valor = entrada / 16; 
+               int resto = entrada % 16;
+               entrada = valor;
+              
+               switch (resto){
+                   case 10:
+                     s = 'A' + s;
+                       break;
+                   case 11:
+                     s = 'B' + s;
+                       break;
+                    case 12:
+                     s = 'C' + s;
+                        break;
+                    case 13:
+                     s = 'D' + s;
+                        break;
+                    case 14:
+                     s = 'E' + s;
+                        break;
+                    case 15:
+                     s = 'F' + s;
+                        break;
+                    default:
+                        s = resto + s;
+                        break;
+               }
+        
+           }
+            switch (entrada){
+                   case 10:
+                     s = 'A' + s;
+                       break;
+                   case 11:
+                     s = 'B' + s;
+                       break;
+                    case 12:
+                     s = 'C' + s;
+                        break;
+                    case 13:
+                     s = 'D' + s;
+                        break;
+                    case 14:
+                     s = 'E' + s;
+                        break;
+                    case 15:
+                     s = 'F' + s;
+                        break;
+                    default:
+                        s = entrada + s;
+                        break;
+               }
+            textSaida.setText(s);
         }
 
         //HEXADECIMAL -> BINÁRIO
@@ -156,8 +220,6 @@ public class Janela extends javax.swing.JDialog {
 
         }
 
-        textEntrada.setText("OK!");
-        textSaida.setText("OK!");
     }//GEN-LAST:event_converterActionPerformed
 
     /**
